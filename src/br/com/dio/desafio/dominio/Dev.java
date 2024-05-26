@@ -1,9 +1,6 @@
 package br.com.dio.desafio.dominio;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Dev {
 
@@ -21,15 +18,30 @@ public class Dev {
     }
 
     public void InscreverBootcamp(Bootcamp bootcamp) {
+        this.conteudosInscritosSet.addAll(bootcamp.getConteudosSetSet());
 
+        // Matricular o Dev no Bootcamp
+        bootcamp.getDevsInscritosSet().add(this);
     }
 
     public void progredir() {
+        // Usando Optional para prevenir erros de NullPointerException
+        // pegando o primeiro conteudo de conteudosInscritosSet
+        Optional<Conteudo> conteudo = this.conteudosInscritosSet.stream().findFirst();
 
+        // E colocando na no set de conteudosConcluidosSet
+        if (conteudo.isPresent()) {
+            this.conteudosConcluidosSet.add(conteudo.get());
+            // E remover do set de conteudosInscritosSet
+            this.conteudosInscritosSet.remove(conteudo.get());
+        } else {
+            System.err.println("Você não esta matriculado em nenhum curso!");;
+        }
     }
 
-    public void calcularTotalXP() {
-
+    public double calcularTotalXP() {
+        // percorrer todos os conteúdos, calcular o XP e somar todos
+        return this.conteudosConcluidosSet.stream().mapToDouble(Conteudo::calcularXP).sum();
     }
 
     public String getNome() {
