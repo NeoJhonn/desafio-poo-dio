@@ -80,4 +80,11 @@ public class Dev {
     public int hashCode() {
         return Objects.hash(nome, conteudosInscritosSet, conteudosConcluidosSet);
     }
+
+    @Override
+    public String toString() {
+        return "Dev{Nome:" +
+                this.nome +
+                "}";
+    }
 }
