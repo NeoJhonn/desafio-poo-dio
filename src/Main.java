@@ -3,6 +3,7 @@ import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -14,7 +15,7 @@ public class Main {
 
         // Criando uma mentoria com polimorfismo/herança
         Conteudo mentoria1 = new Mentoria("Mentoria 1", "Descrição 1", LocalDate.now());
-        Conteudo mentoria2 = new Mentoria("Mentoria 2", "Descrição 2", LocalDate.now());
+        Conteudo mentoria2 = new Mentoria("Mentoria 2", "Descrição 2", LocalDate.of(2024, 4, 15));
 
         // Imprimindo cursos
         System.out.println(curso1);
